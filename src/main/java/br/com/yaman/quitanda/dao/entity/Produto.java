@@ -22,11 +22,11 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Produto {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProdutoSeq")
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ProdutoSeq")
     @Column(name = "COD_PRODUTO")
     private Integer id;
-	
+    
     @Column(name = "NOME")
     private String nome;
     
@@ -42,5 +42,71 @@ public class Produto {
     
     @Column(name = "PESO_MEDIO")
     private Double pesoMedio;
-	
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public TipoProduto getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(TipoProduto tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
+    public Double getCalorias() {
+        return calorias;
+    }
+
+    public void setCalorias(Double calorias) {
+        this.calorias = calorias;
+    }
+
+    public Double getPesoMedio() {
+        return pesoMedio;
+    }
+
+    public void setPesoMedio(Double pesoMedio) {
+        this.pesoMedio = pesoMedio;
+    }
+
+    public Produto(Integer id, String nome, TipoProduto tipoProduto, String descricao, Double calorias,
+            Double pesoMedio) {
+        super();
+        this.id = id;
+        this.nome = nome;
+        this.tipoProduto = tipoProduto;
+        this.descricao = descricao;
+        this.calorias = calorias;
+        this.pesoMedio = pesoMedio;
+    }
+
+    public Produto() {
+        super();
+        // TODO Auto-generated constructor stub
+    }
+    
+    
+    
 }

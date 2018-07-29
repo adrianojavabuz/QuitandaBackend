@@ -36,5 +36,48 @@ public class Estoque {
 	
     @Column(name = "QTD_TOTAL")
     private Integer quantidadeTotal;
+
+    
+    
+
+    
+    //Getters and Setters
+    
+	public Estoque() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Produto getProduto() {
+		return produto;
+	}
+
+	public void setProduto(Produto produto) {
+		this.produto = produto;
+	}
+
+	public Integer getQuantidadeDisponivel() {
+		return quantidadeDisponivel;
+	}
+
+	public void setQuantidadeDisponivel(Integer quantidadeDisponivel) {
+		this.quantidadeDisponivel = quantidadeDisponivel;
+	}
+
+	public Integer getQuantidadeTotal() {
+		return quantidadeTotal;
+	}
+
+	public void setQuantidadeTotal(Integer quantidadeTotal) {
+		this.quantidadeTotal = quantidadeTotal;
+	}
     
 }

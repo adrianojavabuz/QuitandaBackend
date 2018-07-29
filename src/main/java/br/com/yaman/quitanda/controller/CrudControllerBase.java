@@ -7,6 +7,8 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,19 +22,19 @@ import br.com.yaman.quitanda.wrapper.WrapperJsonObject;
 
 
 public abstract class CrudControllerBase<T> {
-	private static final Logger LOGGER = LoggerFactory.getLogger(CrudControllerBase.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CrudControllerBase.class);
     public static final String JSON = "application/json";
     
     public abstract GenericCrudBusiness<T> getBusinessClass();
 
     @RequestMapping(value = "/find-all", method = RequestMethod.GET)
     public List<T> pageLoad() {
-    	try {
-    		return getBusinessClass().findAll();
-		} catch (Exception e) {
-			LOGGER.error(e.getMessage(),e);
-			return new ArrayList<T>();
-		}
+        try {
+            return getBusinessClass().findAll();
+        } catch (Exception e) {
+            LOGGER.error(e.getMessage(),e);
+            return new ArrayList<T>();
+        }
         
     }
   
@@ -48,7 +50,14 @@ public abstract class CrudControllerBase<T> {
 
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     public void delete(@RequestBody WrapperJsonObject<T> t) {
-    	getBusinessClass().delete(t.getT());
+        getBusinessClass().delete(t.getT());
+    
+    }
+    
+
+    @RequestMapping(value = "/edit", method = RequestMethod.PUT)
+    public void edit(@RequestBody WrapperJsonObject<T> t) {
+        getBusinessClass().save(t.getT());
     }
 
     public Type getClassType() {
@@ -58,8 +67,8 @@ public abstract class CrudControllerBase<T> {
     }
     
     private Gson getNewGson() {
-		return new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
-				.create();
-	}
+        return new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+                .create();
+    }
     
 }
